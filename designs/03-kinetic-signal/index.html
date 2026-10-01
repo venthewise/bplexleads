@@ -175,53 +175,6 @@
     }
     .signal-copy strong { color: var(--text); }
 
-    /* Marquee strip — seamless full-bleed ticker */
-    .marquee-wrap {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      border-top: 2px solid var(--coral);
-      border-bottom: 2px solid var(--coral);
-      background: var(--near);
-      overflow: hidden;
-      padding: 0.95rem 0;
-    }
-    .marquee {
-      display: flex;
-      width: max-content;
-      animation: marquee-scroll 28s linear infinite;
-      font-family: Syne, sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      will-change: transform;
-    }
-    .marquee:hover { animation-play-state: paused; }
-    .marquee-track {
-      display: flex;
-      flex-shrink: 0;
-      align-items: center;
-      gap: 2.25rem;
-      padding-right: 2.25rem;
-      white-space: nowrap;
-    }
-    .marquee-track span { color: var(--muted); }
-    .marquee-track .dot {
-      display: inline-block;
-      width: 0.45rem;
-      height: 0.45rem;
-      border-radius: 2px;
-      background: var(--coral);
-      flex-shrink: 0;
-    }
-    @keyframes marquee-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .marquee { animation: none; }
-    }
 
     /* Sections */
     section { padding: 4.5rem 0; }
@@ -407,24 +360,6 @@
     </header>
   </div>
 
-  <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee">
-      <div class="marquee-track">
-        <span>Lead sourcing</span><span class="dot" aria-hidden="true"></span>
-        <span>Lead enrichment</span><span class="dot" aria-hidden="true"></span>
-        <span>Sales services</span><span class="dot" aria-hidden="true"></span>
-        <span>BPLEX Leads</span><span class="dot" aria-hidden="true"></span>
-        <span>Qualified pipeline</span><span class="dot" aria-hidden="true"></span>
-      </div>
-      <div class="marquee-track">
-        <span>Lead sourcing</span><span class="dot" aria-hidden="true"></span>
-        <span>Lead enrichment</span><span class="dot" aria-hidden="true"></span>
-        <span>Sales services</span><span class="dot" aria-hidden="true"></span>
-        <span>BPLEX Leads</span><span class="dot" aria-hidden="true"></span>
-        <span>Qualified pipeline</span><span class="dot" aria-hidden="true"></span>
-      </div>
-    </div>
-  </div>
 
   <div class="wrap">
     <section id="what">
