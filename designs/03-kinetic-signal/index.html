@@ -175,23 +175,52 @@
     }
     .signal-copy strong { color: var(--text); }
 
-    /* Marquee strip */
+    /* Marquee strip — seamless full-bleed ticker */
     .marquee-wrap {
-      border-top: 2px solid var(--coral); border-bottom: 2px solid var(--coral);
-      background: var(--near); overflow: hidden; margin: 0 -1.25rem 0;
-      padding: 0.85rem 0;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-top: 2px solid var(--coral);
+      border-bottom: 2px solid var(--coral);
+      background: var(--near);
+      overflow: hidden;
+      padding: 0.95rem 0;
     }
     .marquee {
-      display: flex; gap: 2.5rem; white-space: nowrap;
-      animation: scroll 22s linear infinite;
-      font-family: Syne, sans-serif; font-weight: 700; font-size: 0.9rem;
-      text-transform: uppercase; letter-spacing: 0.06em;
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 28s linear infinite;
+      font-family: Syne, sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      will-change: transform;
     }
-    .marquee span { color: var(--muted); }
-    .marquee span em { font-style: normal; color: var(--coral); }
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    .marquee:hover { animation-play-state: paused; }
+    .marquee-track {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 2.25rem;
+      padding-right: 2.25rem;
+      white-space: nowrap;
+    }
+    .marquee-track span { color: var(--muted); }
+    .marquee-track .dot {
+      display: inline-block;
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 2px;
+      background: var(--coral);
+      flex-shrink: 0;
+    }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee { animation: none; }
     }
 
     /* Sections */
@@ -380,16 +409,20 @@
 
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee">
-      <span>Lead sourcing <em>·</em></span>
-      <span>Lead enrichment <em>·</em></span>
-      <span>Sales services <em>·</em></span>
-      <span>BPLEX Leads <em>·</em></span>
-      <span>Qualified pipeline <em>·</em></span>
-      <span>Lead sourcing <em>·</em></span>
-      <span>Lead enrichment <em>·</em></span>
-      <span>Sales services <em>·</em></span>
-      <span>BPLEX Leads <em>·</em></span>
-      <span>Qualified pipeline <em>·</em></span>
+      <div class="marquee-track">
+        <span>Lead sourcing</span><span class="dot" aria-hidden="true"></span>
+        <span>Lead enrichment</span><span class="dot" aria-hidden="true"></span>
+        <span>Sales services</span><span class="dot" aria-hidden="true"></span>
+        <span>BPLEX Leads</span><span class="dot" aria-hidden="true"></span>
+        <span>Qualified pipeline</span><span class="dot" aria-hidden="true"></span>
+      </div>
+      <div class="marquee-track">
+        <span>Lead sourcing</span><span class="dot" aria-hidden="true"></span>
+        <span>Lead enrichment</span><span class="dot" aria-hidden="true"></span>
+        <span>Sales services</span><span class="dot" aria-hidden="true"></span>
+        <span>BPLEX Leads</span><span class="dot" aria-hidden="true"></span>
+        <span>Qualified pipeline</span><span class="dot" aria-hidden="true"></span>
+      </div>
     </div>
   </div>
 
