@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BPLEX Leads — Editorial Trust</title>
+  <meta name="description" content="BPLEX Leads — Qualified leads, built for closing. Premium lead sourcing, enrichment, and sales services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f2e8;
+      --cream-dark: #ebe4d4;
+      --paper: #fffcf5;
+      --charcoal: #1c1917;
+      --ink: #2c2825;
+      --muted: #6b6560;
+      --gold: #b8962e;
+      --gold-soft: #d4b85a;
+      --rule: rgba(184, 150, 46, 0.45);
+      --shadow: rgba(28, 25, 23, 0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Source Sans 3", Georgia, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.65;
+      padding-bottom: 72px;
+    }
+    .texture {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(184,150,46,0.08), transparent 50%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(28,25,23,0.015) 2px, rgba(28,25,23,0.015) 3px);
+    }
+    .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Nav */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 0 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .logo {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.55rem; font-weight: 600; letter-spacing: 0.02em;
+      text-decoration: none; color: var(--charcoal);
+    }
+    .logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-cta {
+      color: var(--charcoal) !important; font-weight: 600 !important;
+      border-bottom: 1.5px solid var(--gold); padding-bottom: 2px;
+    }
+    @media (max-width: 700px) {
+      .nav-links li:not(:last-child) { display: none; }
+    }
+
+    /* Hero — editorial magazine */
+    .hero {
+      padding: 4.5rem 0 4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-kicker {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(3rem, 8vw, 5.25rem);
+      font-weight: 600; line-height: 1.05; letter-spacing: -0.02em;
+      color: var(--charcoal); max-width: 14ch; margin-bottom: 1.75rem;
+    }
+    .hero h1 em {
+      font-style: italic; font-weight: 500; color: var(--gold);
+    }
+    .hero-grid {
+      display: grid; gap: 2rem;
+    }
+    @media (min-width: 800px) {
+      .hero-grid { grid-template-columns: 1.4fr 1fr; align-items: end; gap: 3rem; }
+    }
+    .hero-body {
+      font-size: 1.15rem; color: var(--muted); max-width: 28rem;
+      border-left: 2px solid var(--gold); padding-left: 1.25rem;
+    }
+    .hero-aside {
+      background: var(--paper); border: 1px solid rgba(28,25,23,0.08);
+      box-shadow: 0 12px 40px var(--shadow); border-radius: 4px;
+      padding: 1.75rem 1.5rem;
+    }
+    .hero-aside h2 {
+      font-family: "Cormorant Garamond", serif; font-size: 1.35rem;
+      font-weight: 600; margin-bottom: 0.75rem; color: var(--charcoal);
+    }
+    .hero-aside ul { list-style: none; }
+    .hero-aside li {
+      font-size: 0.95rem; color: var(--muted); padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(28,25,23,0.06);
+      display: flex; gap: 0.65rem; align-items: baseline;
+    }
+    .hero-aside li:last-child { border-bottom: none; }
+    .hero-aside li::before {
+      content: "—"; color: var(--gold); font-weight: 600;
+    }
+    .hero-cta-row { margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .btn-gold {
+      display: inline-flex; align-items: center;
+      background: var(--charcoal); color: var(--cream); text-decoration: none;
+      font-weight: 600; font-size: 0.95rem; padding: 0.9rem 1.5rem;
+      border-radius: 2px; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-gold:hover { background: #000; transform: translateY(-1px); }
+    .btn-text {
+      color: var(--charcoal); font-weight: 600; text-decoration: none;
+      font-size: 0.95rem; border-bottom: 1.5px solid var(--gold); padding-bottom: 2px;
+    }
+    .btn-text:hover { color: var(--gold); }
+
+    /* Sections */
+    section { padding: 4.5rem 0; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.2rem, 4.5vw, 3rem); font-weight: 600;
+      color: var(--charcoal); line-height: 1.15; margin-bottom: 0.75rem;
+      letter-spacing: -0.015em;
+    }
+    .section-intro {
+      color: var(--muted); font-size: 1.05rem; max-width: 32rem; margin-bottom: 2.75rem;
+    }
+    .gold-rule {
+      width: 48px; height: 1.5px; background: var(--gold); margin-bottom: 1.25rem;
+    }
+
+    /* Cards — editorial columns */
+    .services {
+      display: grid; gap: 0;
+      border-top: 1px solid var(--rule);
+    }
+    @media (min-width: 768px) {
+      .services { grid-template-columns: repeat(3, 1fr); }
+    }
+    .service {
+      padding: 2rem 1.5rem 2rem 0;
+      border-bottom: 1px solid rgba(28,25,23,0.08);
+    }
+    @media (min-width: 768px) {
+      .service {
+        padding: 2rem 1.75rem 2rem 0;
+        border-bottom: none;
+        border-right: 1px solid rgba(28,25,23,0.08);
+      }
+      .service:first-child { padding-left: 0; }
+      .service:last-child { border-right: none; padding-right: 0; }
+      .service:not(:first-child) { padding-left: 1.75rem; }
+    }
+    .service-num {
+      font-family: "Cormorant Garamond", serif; font-size: 2rem;
+      color: var(--gold); font-weight: 500; line-height: 1; margin-bottom: 0.85rem;
+    }
+    .service h3 {
+      font-family: "Cormorant Garamond", serif; font-size: 1.5rem;
+      font-weight: 600; color: var(--charcoal); margin-bottom: 0.6rem;
+    }
+    .service p { color: var(--muted); font-size: 0.98rem; }
+
+    /* How — numbered editorial */
+    .how-list { display: grid; gap: 0; }
+    .how-item {
+      display: grid; gap: 1rem; padding: 2rem 0;
+      border-top: 1px solid rgba(28,25,23,0.1);
+    }
+    @media (min-width: 700px) {
+      .how-item {
+        grid-template-columns: 100px 1fr;
+        align-items: start; gap: 2rem;
+      }
+    }
+    .how-item:last-child { border-bottom: 1px solid rgba(28,25,23,0.1); }
+    .how-num {
+      font-family: "Cormorant Garamond", serif; font-size: 3rem;
+      font-weight: 500; color: var(--gold); line-height: 1;
+    }
+    .how-item h3 {
+      font-family: "Cormorant Garamond", serif; font-size: 1.6rem;
+      font-weight: 600; margin-bottom: 0.4rem; color: var(--charcoal);
+    }
+    .how-item p { color: var(--muted); max-width: 36rem; }
+
+    /* Contact */
+    .contact {
+      background: var(--charcoal); color: var(--cream);
+      margin: 0 -1.5rem; padding: 4rem 1.5rem;
+      text-align: center;
+    }
+    .contact-inner { max-width: 1040px; margin: 0 auto; }
+    .contact .section-label { color: var(--gold-soft); }
+    .contact .section-title { color: var(--cream); }
+    .contact .section-intro { color: rgba(247,242,232,0.7); margin-left: auto; margin-right: auto; }
+    .contact .btn-gold {
+      background: var(--gold); color: var(--charcoal);
+    }
+    .contact .btn-gold:hover { background: var(--gold-soft); }
+    .contact-email {
+      display: block; margin-top: 1.25rem;
+      font-family: "Cormorant Garamond", serif; font-size: 1.35rem;
+      color: var(--gold-soft); text-decoration: none;
+    }
+    .contact-email:hover { text-decoration: underline; }
+
+    /* Footer */
+    .site-footer {
+      padding: 2.5rem 0; text-align: center;
+      color: var(--muted); font-size: 0.85rem;
+      border-top: 1px solid var(--rule);
+    }
+    .site-footer a { color: var(--gold); text-decoration: none; }
+
+    /* Design picker */
+    .design-picker {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(247, 242, 232, 0.95); backdrop-filter: blur(10px);
+      border-top: 1px solid var(--rule);
+      padding: 0.65rem 1rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .design-picker .dp-label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--muted); margin-right: 0.35rem; font-weight: 700;
+    }
+    .design-picker a {
+      font-size: 0.8rem; font-weight: 600; text-decoration: none;
+      color: var(--muted); padding: 0.4rem 0.75rem; border-radius: 2px;
+      border: 1px solid transparent; transition: all 0.2s;
+    }
+    .design-picker a:hover { color: var(--charcoal); border-color: rgba(28,25,23,0.12); }
+    .design-picker a.active {
+      color: var(--cream); background: var(--charcoal); border-color: var(--charcoal);
+    }
+  </style>
+</head>
+<body>
+  <div class="texture" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="./">BPLEX <span>Leads</span></a>
+      <ul class="nav-links">
+        <li><a href="#what">What we do</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a class="nav-cta" href="mailto:ammagsinoalvin@bplexleads.com">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <p class="hero-kicker">Lead processor · Established trust</p>
+      <h1>Qualified leads,<br /><em>built for closing.</em></h1>
+      <div class="hero-grid">
+        <p class="hero-body">
+          BPLEX Leads helps companies fill and work their pipeline. We source and provide leads,
+          enrich every record, and deliver sales services on the leads we bring — or the ones you send us.
+        </p>
+        <aside class="hero-aside">
+          <h2>At a glance</h2>
+          <ul>
+            <li>ICP-matched lead sourcing</li>
+            <li>Full-record enrichment</li>
+            <li>Hands-on sales support</li>
+          </ul>
+        </aside>
+      </div>
+      <div class="hero-cta-row">
+        <a class="btn-gold" href="mailto:ammagsinoalvin@bplexleads.com">Start a conversation</a>
+        <a class="btn-text" href="#what">Explore services</a>
+      </div>
+    </header>
+
+    <section id="what">
+      <div class="gold-rule" aria-hidden="true"></div>
+      <p class="section-label">Services</p>
+      <h2 class="section-title">What we do</h2>
+      <p class="section-intro">Three pillars of lead processing — designed for teams that take pipeline seriously.</p>
+      <div class="services">
+        <article class="service">
+          <div class="service-num">01</div>
+          <h3>Lead sourcing</h3>
+          <p>We source and provide qualified leads aligned to your ideal customer profile — prospects worth a seller’s time.</p>
+        </article>
+        <article class="service">
+          <div class="service-num">02</div>
+          <h3>Lead enrichment</h3>
+          <p>We enrich leads with the context that sharpens outreach — so conversations start informed, not cold.</p>
+        </article>
+        <article class="service">
+          <div class="service-num">03</div>
+          <h3>Sales services</h3>
+          <p>Hands-on sales support on leads we provide or that you give us — keeping momentum from first touch to close.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="gold-rule" aria-hidden="true"></div>
+      <p class="section-label">Process</p>
+      <h2 class="section-title">How it works</h2>
+      <p class="section-intro">A measured path from brief to booked conversations.</p>
+      <div class="how-list">
+        <div class="how-item">
+          <div class="how-num">I</div>
+          <div>
+            <h3>Define the brief</h3>
+            <p>We align on your ICP, markets, and what “qualified” means for your sales motion.</p>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-num">II</div>
+          <div>
+            <h3>Source & enrich</h3>
+            <p>We build and enrich the list — or take leads you already have and make them sales-ready.</p>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-num">III</div>
+          <div>
+            <h3>Engage with support</h3>
+            <p>Optional sales services keep outreach moving so opportunities don’t stall in the pipeline.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Let’s fill the pipeline</h2>
+      <p class="section-intro">Share your market and goals. We’ll show how BPLEX Leads can source, enrich, and support the leads that close.</p>
+      <a class="btn-gold" href="mailto:ammagsinoalvin@bplexleads.com">Email us</a>
+      <a class="contact-email" href="mailto:ammagsinoalvin@bplexleads.com">ammagsinoalvin@bplexleads.com</a>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer class="site-footer">
+      <p>© BPLEX Leads · <a href="mailto:ammagsinoalvin@bplexleads.com">ammagsinoalvin@bplexleads.com</a></p>
+    </footer>
+  </div>
+
+  <nav class="design-picker" aria-label="Design picker">
+    <span class="dp-label">Designs</span>
+    <a href="../01-midnight-pipeline/">1 · Midnight</a>
+    <a class="active" href="../02-editorial-trust/" aria-current="page">2 · Editorial</a>
+    <a href="../03-kinetic-signal/">3 · Kinetic</a>
+    <a href="../../">Hub</a>
+  </nav>
+</body>
+</html>

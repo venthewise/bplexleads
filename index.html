@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BPLEX Leads — Design Picker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b14;
+      --surface: #0f1624;
+      --border: rgba(255,255,255,0.08);
+      --text: #e8eef8;
+      --muted: #8b9bb4;
+      --teal: #2dd4bf;
+      --gold: #c9a227;
+      --coral: #ff4d6d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Outfit, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(45,212,191,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45,212,191,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black, transparent);
+    }
+    .wrap { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    header { text-align: center; margin-bottom: 3.5rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--teal); border: 1px solid rgba(45,212,191,0.35);
+      padding: 0.35rem 0.85rem; border-radius: 999px; margin-bottom: 1.25rem;
+      background: rgba(45,212,191,0.08);
+    }
+    h1 {
+      font-family: "Space Grotesk", Outfit, sans-serif;
+      font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+    h1 span { color: var(--teal); }
+    .lede {
+      max-width: 36rem; margin: 0 auto 1.5rem; color: var(--muted); font-size: 1.05rem;
+    }
+    .note {
+      max-width: 40rem; margin: 0 auto;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1rem 1.25rem; color: var(--muted); font-size: 0.9rem;
+    }
+    .note strong { color: var(--text); }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.16);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+    .preview {
+      height: 160px; position: relative; overflow: hidden;
+      display: flex; align-items: flex-end; padding: 1rem;
+    }
+    .preview-01 {
+      background: linear-gradient(145deg, #020617 0%, #0c1a2e 50%, #134e4a 100%);
+    }
+    .preview-01::after {
+      content: ""; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(45,212,191,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45,212,191,0.12) 1px, transparent 1px);
+      background-size: 20px 20px; opacity: 0.5;
+    }
+    .preview-02 {
+      background: linear-gradient(160deg, #f7f2e8 0%, #ebe4d4 60%, #e8d9b0 100%);
+    }
+    .preview-03 {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0a12 40%, #ff4d6d 160%);
+    }
+    .preview-label {
+      position: relative; z-index: 1;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.65rem; border-radius: 6px;
+    }
+    .p1 { background: rgba(45,212,191,0.2); color: #5eead4; }
+    .p2 { background: rgba(201,162,39,0.25); color: #8b6914; }
+    .p3 { background: rgba(255,77,109,0.25); color: #ff8fa3; }
+    .card-body { padding: 1.35rem 1.35rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .card-body h2 {
+      font-family: "Space Grotesk", sans-serif; font-size: 1.25rem; margin-bottom: 0.4rem;
+    }
+    .card-body p { color: var(--muted); font-size: 0.92rem; flex: 1; margin-bottom: 1.25rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.15rem; }
+    .tag {
+      font-size: 0.7rem; color: var(--muted); border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem; border-radius: 999px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      background: var(--teal); color: #042f2e; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; padding: 0.7rem 1.1rem; border-radius: 10px;
+      transition: filter 0.2s, transform 0.15s;
+    }
+    .btn:hover { filter: brightness(1.08); transform: scale(1.02); }
+    .btn-gold { background: var(--gold); color: #1a1408; }
+    .btn-coral { background: var(--coral); color: #fff; }
+    footer {
+      text-align: center; margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem;
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="wrap">
+    <header>
+      <div class="badge">Design gallery</div>
+      <h1>BPLEX <span>Leads</span> — pick a look</h1>
+      <p class="lede">Three production-ready landing pages. Open each, compare, then tell us which one becomes the live site.</p>
+      <p class="note"><strong>How to finalize:</strong> Browse all three designs (each has a bottom picker bar). When you choose one, we will promote that design to the root and retire the gallery.</p>
+    </header>
+
+    <div class="grid">
+      <article class="card">
+        <div class="preview preview-01">
+          <span class="preview-label p1">Design 01</span>
+        </div>
+        <div class="card-body">
+          <h2>Midnight Pipeline</h2>
+          <p>Cinematic dark B2B — deep navy, electric teal, glass cards, data-grid atmosphere. Luxury SaaS energy.</p>
+          <div class="tags">
+            <span class="tag">Dark</span>
+            <span class="tag">Teal accent</span>
+            <span class="tag">Space Grotesk</span>
+          </div>
+          <a class="btn" href="designs/01-midnight-pipeline/">Open full page →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="preview preview-02">
+          <span class="preview-label p2">Design 02</span>
+        </div>
+        <div class="card-body">
+          <h2>Editorial Trust</h2>
+          <p>Light editorial — cream, charcoal, warm gold. Serif headlines, magazine whitespace, premium consulting feel.</p>
+          <div class="tags">
+            <span class="tag">Light</span>
+            <span class="tag">Gold accent</span>
+            <span class="tag">Cormorant</span>
+          </div>
+          <a class="btn btn-gold" href="designs/02-editorial-trust/">Open full page →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="preview preview-03">
+          <span class="preview-label p3">Design 03</span>
+        </div>
+        <div class="card-body">
+          <h2>Kinetic Signal</h2>
+          <p>Bold modern — near-black, vivid coral, oversized type, asymmetric layouts. High-energy B2B that still closes deals.</p>
+          <div class="tags">
+            <span class="tag">Bold</span>
+            <span class="tag">Coral accent</span>
+            <span class="tag">Kinetic type</span>
+          </div>
+          <a class="btn btn-coral" href="designs/03-kinetic-signal/">Open full page →</a>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      <p>© BPLEX Leads · <a href="mailto:ammagsinoalvin@bplexleads.com">ammagsinoalvin@bplexleads.com</a></p>
+      <p style="margin-top:0.4rem">Domain context: bplexleads.com (custom domain not configured yet)</p>
+    </footer>
+  </div>
+</body>
+</html>
